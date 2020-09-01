@@ -1,0 +1,1260 @@
+WindowMan:
+    MainWindow
+    SecondWindow
+    ThirdWindow
+    AboutWindow
+    SelectionWindow
+    StarScWindow
+    StarScWindowC
+    ForgotPassSc
+    PuzzleWindow
+    PuzzleWindowComp
+    MainLogWindow
+    AboutWindowLog
+    PuzzleWindowComp4
+
+<ForgotPassSc>
+    name: "forgotsc"
+    ForgotPass:
+<MainLogWindow>
+    name: "mainlogin"
+    MyGridLog:
+        id: logpuzz
+<MainWindow>
+    name: "main"
+    MyGrid:
+<SecondWindow>:
+    name: "second"
+    MyGridS:
+<ThirdWindow>:
+    name: "third"
+    MyGridT:
+<AboutWindow>
+    name: "rullsw"
+    RullesGrid:
+<AboutWindowLog>
+    name: "rullswlog"
+    RullesGrid1:
+<PracticeWindow>
+    name: "practice"
+<CompWindow>
+    name: "comp"
+<SelectionWindow>
+    name: "select"
+    SellectionGrid:
+        id: slct
+<StarScWindow>
+    name: "startsc"
+    AnchorLayout:
+        size: root.width, root.height
+        anchor_x: 'center'
+        anchor_y: 'top'
+        padding: [5,5,5,5]
+        AboutLable:
+            size_hint: 1,0.2
+            text: 'Seconds until game starts'
+            color: 0,0,0,1
+        BoxLayout:
+            id: hello
+
+<StarScWindowC>
+    name: "startscC"
+    AnchorLayout:
+        size: root.width, root.height
+        anchor_x: 'center'
+        anchor_y: 'top'
+        padding: [5,5,5,5]
+        AboutLable:
+            size_hint: 1,0.2
+            text: 'Seconds until game starts'
+            color: 0,0,0,1
+        BoxLayout:
+            id: helloC
+
+<PuzzleWindow>
+    name: "puzzle"
+    Puzzless1:
+        id: puzz
+
+#novi 4x4 screen samo za compatition
+<PuzzleWindowComp4>
+    name: "puzzleComp4"
+    Puzzless1Comp:
+        id: puzzc4
+
+<PuzzleWindowComp>
+    name: "puzzleComp"
+    Puzzless2:
+        id: puzzc
+
+<MyGrid>
+    AnchorLayout:
+        size: root.width,root.height
+        anchor_y: "top"
+        anchor_x: "right"
+        EditedButton:
+            size_hint: .3, .06
+            text: "Log in"
+            bold: True
+            font_size: 16
+            on_press: self.back_color=(0,0,0,1)
+            on_release:
+                app.root.current = "third"
+                app.root.transition.direction = 'left'
+                self.back_color=(0.2,0.9,0.9,1)
+    AnchorLayout:
+        size: root.width,root.height
+        anchor_y: "top"
+        anchor_x:"left"
+        EditedButton:
+            size_hint: .3, .06
+            text: "Sign Up"
+            bold: True
+            font_size: 16
+            on_press: self.back_color=(0,0,0,1)
+            on_release:
+                app.root.current = "second"
+                app.root.transition.direction = 'left'
+                self.back_color=(0.2,0.9,0.9,1)
+    GridLayout:
+        size: root.width-80,root.height-120
+        pos: 40,50
+        cols: 1
+        rows: 6
+        background_color: 1,1,0.2,1
+        spacing: 10
+        EditedButton1:
+            text: "Practice"
+            color: 0.2,0.9,0.9,1
+            font_size: 22
+            on_press: self.back_color=(0,0,0,1)
+            on_release:
+                app.root.current = "startsc"
+                app.root.transition.direction = 'left'
+                self.back_color=(0.2,0.9,0.9,1)
+        EditedButton1:
+            id: compBtn
+            text: "Competative"
+            font_size: 22
+            on_press:
+                self.back_color=(0.5,0,0,0.4)
+                root.CompBtn()
+        EditedButton1:
+            back_color: (0.2,0.9,0.9,1)
+            font_size: 22
+            text: "Rulles"
+            on_press: self.back_color=(0,0,0,1)
+            on_release:
+                app.root.current = "rullsw"
+                app.root.transition.direction = 'left'
+                self.back_color=(0.2,0.9,0.9,1)
+
+<MyGridS@Widget>
+    AnchorLayout:
+        size: root.width,root.height
+        padding: [30,20,30,60]
+        anchor_y: "top"
+        anchor_x: "center"
+        GridLayout:
+            cols: 1
+            spacing: 5
+            LogInBLable:
+                text: "Sign up"
+                font_size: 22
+                size_hint: 1,0.5
+                color: 0,0,0,1
+            GridLayout:
+                spacing: 2
+                cols:2
+                rows:4
+                LogInBLable:
+                    font_size: 12
+                    text: "Username:"
+                    color: 0,0,0,1
+                    bold: True
+                TextInput:
+                    id: user_2
+                    padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+                    font_size: 12
+                    multiline:False
+                LogInBLable:
+                    font_size: 12
+                    text: "Password:"
+                    color: 0,0,0,1
+                    bold: True
+                TextInput:
+                    id: pass_2
+                    padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+                    font_size: 12
+                    multiline:False
+                    password: True
+                LogInBLable:
+                    font_size: 12
+                    text: "Email:"
+                    color: 0,0,0,1
+                    bold: True
+                TextInput:
+                    id: email_1
+                    padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+                    font_size: 12
+                    multiline:False
+            LogInBLable:
+                text: "             Secret question\nWhat is your favorite game?"
+                font_size: 10
+                size_hint: 1,0.5
+                color: 0,0,0,1
+            TextInput:
+                size_hint: 1,0.4
+                id: scrt_1
+                padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+                font_size: 12
+                multiline:False
+                password: True
+            EditedButton1:
+                font_size: 30
+                size_hint: 0.9,0.9
+                text: "Submit"
+                color: 0.2,0.9,0.9,1
+                bold: True
+                on_press:
+                    self.back_color=(0,0,0,1)
+                    root.DBsend(user_2, pass_2, email_1, scrt_1 )
+                    root.clear_inputs([user_2, pass_2, email_1, scrt_1])
+                on_release:
+#                    app.root.current = "main"
+#                    app.root.transition.direction = 'left'
+                    self.back_color=(0.2,0.9,0.9,1)
+            GridLayout:
+                size_hint: 1,0.2
+                cols: 1
+                Button:
+                    background_color: 0,0,0,0
+                    color: 0.2,0.4,0.6,1
+                    font_size: 10
+                    text: 'Already signed up?'
+                    on_press:
+                        self.color=(0,0,0,1)
+                    on_release:
+                        self.color=(0.2,0.4,0.6,1)
+                        app.root.current= "third"
+                        app.root.transition.direction = 'left'
+
+    AnchorLayout:
+        anchor_y: "bottom"
+        anchor_x: "left"
+        EditedButton:
+            size_hint: .65,.22
+            text:"Back"
+            bold: True
+            on_press: self.back_color=(0,0,0,1)
+            on_release:
+                app.root.current = "main"
+                app.root.transition.direction = 'right'
+                self.back_color=(0.2,0.9,0.9,1)
+
+<MyGridLog@Widget>
+    AnchorLayout:
+        size: root.width,root.height
+        anchor_y: "top"
+        anchor_x:"center"
+        Label:
+            id: logedin
+            size_hint: .3, .06
+            bold: True
+            color:(0.2,0.2,1,1)
+            font_size: 14
+    GridLayout:
+        size: root.width-80,root.height-120
+        pos: 40,50
+        cols: 1
+        rows: 6
+        background_color: 1,1,0.2,1
+        spacing: 10
+        EditedButton1:
+            text: "Practice"
+            color: 0.2,0.9,0.9,1
+            font_size: 20
+            on_press:
+                self.back_color=(0.5,0,0,0.4)
+                root.CompBtn()
+        EditedButton1:
+            text: "Competative"
+            font_size: 20
+            on_press:
+                self.back_color=(0,0,0,1)
+            on_release:
+                app.root.current = "select"
+                app.root.transition.direction = 'left'
+                self.back_color=(0.2,0.9,0.9,1)
+        EditedButton1:
+            back_color: (0.2,0.9,0.9,1)
+            font_size: 20
+            text: "Rulles"
+            on_press: self.back_color=(0,0,0,1)
+            on_release:
+                app.root.current = "rullswlog"
+                app.root.transition.direction = 'left'
+                self.back_color=(0.2,0.9,0.9,1)
+    AnchorLayout:
+        size: root.width,root.height
+        anchor_y: "bottom"
+        anchor_x:"center"
+        EditedButton:
+            size_hint: .3, .06
+            text: "Log out"
+            bold: True
+            font_size: 16
+            on_press:
+                self.back_color=(0.5,0,0,0.4)
+            on_release:
+                app.root.current = "main"
+                app.root.transition.direction = 'left'
+                self.back_color=(0.2,0.9,0.9,1)
+
+<MyGridT>
+    AnchorLayout:
+        size: root.size
+        padding: [30,20,30,80]
+        anchor_y: "center"
+        anchor_x: "center"
+        GridLayout:
+            cols: 1
+            spacing: 5
+            LogInBLable:
+                text: "Log in"
+                font_size: 22
+                size_hint: 1,0.7
+                color: 0,0,0,1
+            GridLayout:
+                spacing: 3
+                cols:2
+                rows:2
+                LogInBLable:
+                    font_size: 12
+                    text: "Username:"
+                    color: 0,0,0,1
+                    bold: True
+                TextInput:
+                    id: user_1
+                    padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+                    font_size: 14
+                    multiline:False
+                LogInBLable:
+                    font_size: 12
+                    text: "Password:"
+                    color: 0,0,0,1
+                    bold: True
+                TextInput:
+                    id: pass_1
+                    padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+                    font_size: 14
+                    multiline:False
+                    password: True
+            EditedButton1:
+                font_size: 30
+                size_hint: 0.9,0.9
+                text: "Submit"
+                color: 0.2,0.9,0.9,1
+                bold: True
+                on_press:
+                    self.back_color=(0,0,0,1)
+                    root.DBrecieve(user_1, pass_1)
+                    root.clear_inputs([pass_1, user_1])
+                on_release:
+                    self.back_color=(0.2,0.9,0.9,1)
+            GridLayout:
+                rows: 2
+                size_hint: 0.6,0.5
+                Button:
+                    background_color: 0,0,0,0
+                    color: 0.2,0.4,0.6,1
+                    font_size: 10
+                    text: 'Forgot password?'
+                    on_press:
+                        self.color=(0,0,0,1)
+                    on_release:
+                        app.root.current = "forgotsc"
+                        app.root.transition.direction = 'left'
+                        self.color=(0.2,0.4,0.6,1)
+                Button:
+                    background_color: 0,0,0,0
+                    color: 0.2,0.4,0.6,1
+                    font_size: 10
+                    text: 'Not signed up yet?'
+                    on_press:
+                        self.color=(0,0,0,1)
+                    on_release:
+                        self.color=(0.2,0.4,0.6,1)
+                        app.root.transition.direction = 'right'
+                        app.root.current = 'second'
+
+    AnchorLayout:
+        anchor_y: "bottom"
+        anchor_x: "left"
+        EditedButton:
+            size_hint: .65,.22
+            text:"Back"
+            bold: True
+            on_press: self.back_color=(0,0,0,1)
+            on_release:
+                app.root.current = "main"
+                app.root.transition.direction = 'right'
+                self.back_color=(0.2,0.9,0.9,1)
+
+<RullesGrid@Widget>
+    BoxLayout:
+        size: root.size
+        padding: [10,10,10,30]
+        orientation: 'vertical'
+        spacing: 3
+        AboutLable:
+            size_hint: 1,0.2
+            color: 0,0,0,1
+            font_size: 16
+            text: "About Memory battle"
+        AboutLable1:
+            text_size: self.size
+            valign: 'top'
+            halign: 'center'
+            pos_hint: {'x': 0.01, 'y': 0}
+            size_hint: 0.98,0.80
+            color: 0,0,0,1
+            font_size: 11
+            text: "Memory battle is a mobile game that can be played with your friends. The person who collects most points wins the game.Your game results will be uploaded to the website so you can check your review your progress. Game allows a practice mode so you can improve your skills"
+        AboutLable:
+            size_hint: 1,0.18
+            color: 0,0,0,1
+            font_size: 16
+            text: 'How to play ?'
+        AboutLable1:
+            pos_hint: {'x': 0.01, 'y': 0}
+            size_hint: 0.98,0.95
+            color: 0,0,0,1
+            text_size: self.size
+            valign: 'top'
+            halign: 'center'
+            font_size: 11
+            text: "The game allowes 4x4 and 5x6 fields of memory puzzles that you have to uncover in pairs. When selecting the number of players and difficulty you are ready to play. The profile owner always starts first. Points are granted for correct pair and helf of a point is taken for failed attempts. Pictures in 4x4 field will be shown for 2 seconds and 3 seconds in 5x6 field"
+    AnchorLayout:
+        size: root.size
+        padding: [50,10,50,0]
+        anchor_y: "bottom"
+        anchor_x: "center"
+        EditedButton:
+            size_hint: .5,.07
+            text:"Back"
+            bold: True
+            on_press: self.back_color=(0,0,0,1)
+            on_release:
+                app.root.current = "main"
+                app.root.transition.direction = 'right'
+                self.back_color=(0.2,0.9,0.9,1)
+
+<RullesGrid1@Widget>
+    BoxLayout:
+        size: root.size
+        padding: [10,10,10,30]
+        orientation: 'vertical'
+        spacing: 3
+        AboutLable:
+            size_hint: 1,0.2
+            color: 0,0,0,1
+            font_size: 16
+            text: "About Memory battle"
+        AboutLable1:
+            text_size: self.size
+            valign: 'top'
+            halign: 'center'
+            pos_hint: {'x': 0.01, 'y': 0}
+            size_hint: 0.98,0.65
+            color: 0,0,0,1
+            font_size: 11
+            text: "Memory battle is a mobile game that can be played with your friends. The person who collects most points wins the game.Your best scores will be uploaded to the website so you can check your game history. Game allows a practice mode so you can improve your skills"
+        AboutLable:
+            size_hint: 1,0.18
+            color: 0,0,0,1
+            font_size: 16
+            text: 'How to play ?'
+        AboutLable1:
+            pos_hint: {'x': 0.01, 'y': 0}
+            size_hint: 0.98,1.1
+            color: 0,0,0,1
+            text_size: self.size
+            valign: 'top'
+            halign: 'center'
+            font_size: 11
+            text: "The game allowes 4x4 and 6x6 fields of memory pussels that you have to uncover in pairs. When selecting the number of players and puzzle object type you are ready to play. The profile owner always starts first. Because we have different memory types users can select and upload their own pusless on the webside. Points are granted for correct pair and taken for failed attemts. Extra point is granded for a faster time between players when players points are tied."
+    AnchorLayout:
+        size: root.size
+        padding: [50,10,50,0]
+        anchor_y: "bottom"
+        anchor_x: "center"
+        EditedButton:
+            size_hint: .5,.07
+            text:"Back"
+            bold: True
+            on_press: self.back_color=(0,0,0,1)
+            on_release:
+                app.root.current = "mainlogin"
+                app.root.transition.direction = 'right'
+                self.back_color=(0.2,0.9,0.9,1)
+<ForgotPass>
+    AnchorLayout:
+        size: root.size
+        padding: [30,20,30,80]
+        anchor_y: "center"
+        anchor_x: "center"
+        GridLayout:
+            id: jam
+            cols: 1
+            spacing: 2
+            AboutLable1:
+                size_hint: 1,1.1
+                text_size: self.size
+                font_size: 12
+                valign: 'top'
+                halign: 'center'
+                pos_hint: {'x': 0.01, 'y': 1}
+                text: 'To set new password answer the secret question'
+                color: 0,0,0,1
+            LogInBLable:
+                font_size: 12
+                text: "Username"
+                color: 0,0,0,1
+                bold: True
+            TextInput:
+                id: user_3
+                padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+                font_size: 14
+                multiline:False
+            LogInBLable:
+                font_size: 9
+                text: "What is your favorite game?"
+                color: 0,0,0,1
+                bold: True
+            TextInput:
+                id: scrt_2
+                spacing: 5
+                padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+                font_size: 14
+                multiline:False
+                password: True
+            LogInBLable:
+                font_size: 12
+                text: "New password"
+                color: 0,0,0,1
+                bold: True
+            TextInput:
+                id: pass_3
+                spacing: 5
+                padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+                font_size: 14
+                multiline:False
+                password: True
+            EditedButton1:
+                size_hint: 1,1.5
+                font_size: 19
+                text: "Submit"
+                color: 0.2,0.9,0.9,1
+                bold: True
+                on_press:
+                    self.back_color=(0,0,0,1)
+                    root.newsend(user_3,scrt_2,pass_3)
+                    root.clear_inputs([user_3,scrt_2,pass_3])
+                on_release: self.back_color=(0.2,0.9,0.9,1)
+
+    AnchorLayout:
+        size: root.size
+        padding: [50,10,50,0]
+        anchor_y: "bottom"
+        anchor_x: "center"
+        EditedButton:
+            size_hint: .5,.07
+            text:"Back"
+            bold: True
+            on_press: self.back_color=(0,0,0,1)
+            on_release:
+                app.root.current = "third"
+                app.root.transition.direction = 'right'
+                self.back_color=(0.2,0.9,0.9,1)
+
+#ID == dva, to access it in code - num_2
+<SellectionGrid>
+    GridLayout:
+        cols:1
+        width: root.width
+        height: root.height
+        AnchorLayout:
+            anchor_x: "center"
+            anchor_y: "top"
+            AboutLable1:
+                size_hint: 1,0.06
+                color: 0,0,0,1
+                text: "CONSTRUCT YOUR GAME"
+                font_size: 12
+    GridLayout:
+        size: root.width,root.height-40
+        cols:1
+        padding: [5,5,5,40]
+        AboutLable:
+            size_hint: 0.1,0.08
+            color: 0,0,0,1
+            text: "Number of players:"
+            font_size: 12
+        GridLayout:
+            id: pchoicebox
+            size: root.size
+            size_hint: 0.5,0.4
+            padding: [10,10,10,10]
+            color: 0,0,0,1
+            cols: 2
+            rows: 3
+            spacing: 5
+            AboutLable2:
+                size_hint: 0.5,0.36
+                font_size: 10
+                text: "2 players"
+                color: 0,0,0,1
+            CustomCheckBox:
+                active: False
+                group: 'prva'
+                text: '2'
+                on_active:
+                    root.if_activeNOP(self.text)
+            AboutLable2:
+                size_hint: 0.5,0.36
+                font_size: 11
+                text: "3 players"
+                color: 0,0,0,1
+            CustomCheckBox:
+                group: 'prva'
+                active: False
+                text: '3'
+                on_active:
+                    root.if_activeNOP(self.text)
+            AboutLable2:
+                text: "4 players"
+                color: 0,0,0,1
+                size_hint: 0.5,0.36
+                font_size: 11
+            CustomCheckBox:
+                group: 'prva'
+                active: False
+                text: '4'
+                on_active:
+                    root.if_activeNOP(self.text)
+        AboutLable:
+            size_hint: 0.1,0.08
+            color: 0,0,0,1
+            text: "Difficulty"
+            font_size: 12
+        GridLayout:
+            id: dchoicebox
+            cols: 2
+            rows: 2
+            size: root.size
+            size_hint: 0.5,0.3
+            padding: [10,10,10,10]
+            color: 0,0,0,1
+            spacing: 5
+            AboutLable2:
+                size_hint: 0.5,0.36
+                font_size: 11
+                text: "4x4"
+                color: 0,0,0,1
+            CustomCheckBox:
+                group: 'druga'
+                active: False
+                text: "Easy: 4x4"
+                on_active:
+                    root.if_actived(self.text)
+            AboutLable2:
+                size_hint: 0.5,0.36
+                font_size: 11
+                text: "5x6"
+                color: 0,0,0,1
+            CustomCheckBox:
+                group: 'druga'
+                active: False
+                text: "Hard: 5x6"
+                on_active:
+                    root.if_actived(self.text)
+        GridLayout:
+            cols: 1
+            size: root.size
+            size_hint: 0.5,0.3
+            padding: [10,10,10,10]
+            color: 0,0,0,1
+            EditedButton2:
+                id: readygo
+                text: "Ready"
+                bold: True
+                font_size: 25
+                color: 0.2,0.9,0.9,1
+                on_press:
+                    self.back_color=(0,0,0,1)
+                    root.ClearText()
+                    root.ClearText2()
+                    root.if_under()
+                on_release:
+                    app.root.current = "startscC"
+                    app.root.transition.direction = 'left'
+                    self.back_color=(0.2,0.9,0.9,1)
+
+    AnchorLayout:
+        size: root.size
+        padding: [50,10,50,0]
+        anchor_y: "bottom"
+        anchor_x: "center"
+        EditedButton:
+            size_hint: .5,.06
+            text:"Back"
+            bold: True
+            on_press: self.back_color=(0,0,0,1)
+            on_release:
+                app.root.current = "mainlogin"
+                app.root.transition.direction = 'right'
+                self.back_color=(0.2,0.9,0.9,1)
+                root.ClearText()
+                root.ClearText2()
+
+<Puzzless1@Widget>
+    GridLayout:
+        size: root.size
+        padding: [2,15,2,50]
+        cols:1
+        canvas.before:
+            RoundedRectangle:
+                pos: 10,30
+                size: self.width-20,self.height-40
+                source: "C:/Users/Maj/Desktop/images1.jpg"
+                radius: [10,]
+        GridLayout:
+            id: puzzG
+            spacing: 1,12
+            padding: [18,15,18,0]
+            size: root.size
+            cols: 4
+            rows: 4
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+        GridLayout:
+            id: puzzS
+            padding: 30,35,30,0
+            size_hint:0.2,0.3
+            cols:2
+            spacing: 2,0
+            AboutLableScoreL:
+                id: scores
+                size_hint: 0.1,0.4
+            AboutLableScoreR:
+                size_hint: 0.1,0.4
+                text: '0'
+                font_size: 21
+                color: 222/255,1,0,1
+    AnchorLayout:
+        id: done
+        size: root.width, root.height
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        EditedButton:
+            size_hint: .3,.07
+            text:"Done"
+            font_size: 12
+            bold: True
+            on_press:
+                self.back_color=(0,0,0,1)
+            on_release:
+                app.root.current = "main"
+                app.root.transition.direction = 'right'
+                self.back_color=(0.2,0.9,0.9,1)
+
+<Puzzless1Comp>
+    GridLayout:
+        size: root.size
+        padding: [2,15,2,50]
+        cols:1
+        canvas.before:
+            RoundedRectangle:
+                pos: 10,30
+                size: self.width-20,self.height-40
+                source: "C:/Users/Maj/Desktop/images1.jpg"
+                radius: [10,]
+        GridLayout:
+            id: puzzGC4
+            spacing: 1,12
+            padding: [18,15,18,0]
+            size: root.size
+            cols: 4
+            rows: 4
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+            EditedPuzzle2:
+                size_hint: 1,1.1
+        GridLayout:
+            id: puzzSC4
+            padding: 30,35,30,0
+            size_hint:0.2,0.3
+            cols:2
+            AboutLableScoreL:
+                id: scores
+                size_hint: 0.1,0.4
+            AboutLableScoreR:
+                id: resultscore4
+                size_hint: 0.1,0.4
+                text: '0'
+                font_size: 20
+                color: 222/255,1,0,1
+    AnchorLayout:
+        id: resign
+        size: root.width, root.height
+        anchor_x: 'left'
+        anchor_y: 'bottom'
+        EditedButton:
+            size_hint: .3,.07
+            text:"Resign"
+            font_size: 12
+            bold: True
+            on_press:
+                self.back_color=(0,0,0,1)
+            on_release:
+                root.resignReset()
+                app.root.transition.direction = 'right'
+                self.back_color=(0.2,0.9,0.9,1)
+
+    AnchorLayout:
+        id: finish
+        size: root.width, root.height
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        EditedButton:
+            size_hint: .3,.07
+            text:"Finished"
+            font_size: 12
+            bold: True
+            on_press:
+                self.back_color=(0,0,0,1)
+            on_release:
+                root.finishDir()
+                app.root.transition.direction = 'left'
+                self.back_color=(0.2,0.9,0.9,1)
+
+
+<Puzzless2>
+    GridLayout:
+        size: root.size
+        padding: [2,2,2,20]
+        cols:1
+        canvas.before:
+            RoundedRectangle:
+                pos: 10,30
+                size: self.width-20,self.height-40
+                source: "C:/Users/Maj/Desktop/images1.jpg"
+                radius: [10,]
+        GridLayout:
+            id: puzzGC
+            spacing: 1
+            padding: [25,25,25,0]
+            size: root.size
+            cols: 5
+            rows: 6
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+
+            EditedPuzzle2:
+        GridLayout:
+            id: puzzSC
+            padding: 30,10,30,30
+            spacing: 2
+            size_hint:0.2,0.3
+            cols:2
+            AboutLableScoreL:
+                id: cscores
+                size_hint: 0.1,0.1
+                color: 1,1,1,1
+            AboutLableScoreR:
+                id: resultscore
+                size_hint: 0.1,0.4
+                text: '0'
+                font_size: 21
+                color: 222/255,1,0,1
+    AnchorLayout:
+        id: resign5
+        size: root.width, root.height
+        anchor_x: 'left'
+        anchor_y: 'bottom'
+        EditedButton:
+            size_hint: .3,.07
+            text:"Resign"
+            font_size: 12
+            bold: True
+            on_press: self.back_color=(0,0,0,1)
+            on_release:
+                root.resignReset()
+                app.root.transition.direction = 'right'
+                self.back_color=(0.2,0.9,0.9,1)
+    AnchorLayout:
+        id: finish5
+        size: root.width, root.height
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        EditedButton:
+            size_hint: .3,.07
+            text:"Finished"
+            font_size: 12
+            bold: True
+            on_press:
+                self.back_color=(0,0,0,1)
+            on_release:
+                root.finishDir()
+                app.root.transition.direction = 'left'
+                self.back_color=(0.2,0.9,0.9,1)
+
+
+<LogInBLable@Label>
+    back_color: (0.2,0.9,0.9,1)
+    border_radius: 18
+    color: self.back_color
+    bold: True
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+
+
+
+<EditedLogInButton1@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    back_color: (0.2,0.9,0.9,1)
+    border_radius: 18
+    color: self.back_color
+    bold: True
+    canvas.before:
+        Color:
+            rgba: self.back_color
+
+<EditedButton1@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    back_color: (0.2,0.9,0.9,1)
+    border_radius: 18
+    color: self.back_color
+    bold: True
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        Line:
+            rounded_rectangle:(self.pos[0],self.pos[1],self.size[0],self.size[1],self.border_radius)
+            width: 1.7
+
+<EditedButton2@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    back_color: (0.2,0.9,0.9,1)
+    border_radius: 18
+    color: self.back_color
+    bold: True
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        Line:
+            rounded_rectangle:(self.pos[0],self.pos[1],self.size[0],self.size[1],self.border_radius)
+            width: 1.7
+
+<EditedPuzzle2@Button>
+    a: "C:/Users/Maj/Desktop/markF.jpg"
+    background_color: (0,0,0,0)
+    background_normal: ''
+    back_color: (1, 1, 1, 1)
+    color: self.back_color
+    bold: True
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            source: self.a
+            radius: [14,]
+
+<EditedButton@Button>
+    background_color: (0,0,0,0)
+    background_normal: ''
+    back_color: (0.2,0.9,0.9,1)
+    border_radius: [18]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+
+<AboutLable@Label>
+    back_color: (0.2,0.9,0.9,1)
+    border_radius: 18
+    color: self.back_color
+    bold: True
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+
+<AboutLable1@Label>
+    back_color: (0.2,0.9,0.9,1)
+    border_radius: 18
+    color: self.back_color
+    bold: True
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        Line:
+            rectangle:(self.pos[0],self.pos[1],self.size[0],self.size[1])
+            width: 1
+
+<AboutLableScoreL@Label>
+    a: "C:/Users/Maj/Desktop/scl.jpg"
+    back_color: (1, 1, 1, 1)
+    color: self.back_color
+    bold: True
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            source: self.a
+            radius: [1,]
+
+<AboutLableScoreR@Label>
+    a: "C:/Users/Maj/Desktop/scr.jpg"
+    back_color: (1, 1, 1, 1)
+    color: self.back_color
+    bold: True
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            source: self.a
+            radius: [1,]
+
+<AboutLableUsername@Label>
+    back_color: (1,0.1,0.2,1)
+    border_radius: 18
+    color: self.back_color
+    bold: True
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        Line:
+            rectangle:(self.pos[0],self.pos[1],self.size[0],self.size[1])
+            width: 1.7
+
+<AboutLable@Label>
+    back_color: (0.2,0.9,0.9,1)
+    border_radius: 18
+    color: self.back_color
+    bold: True
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+
+<AboutLable2@Label>
+    back_color: (0.2,0.75,0.9,1)
+    border_radius: 18
+    color: self.back_color
+    bold: True
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+
+
+<CustomCheckBox@CheckBox>
+    color: 0,0,0,1
+    bold: True
+
+<Pop>:
+    Label:
+        text: "Email has been sent"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top": 0.5}
+
+<Pop1>:
+    Label:
+        text: "This username is already taken.\nChose a different username."
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top": 0.5}
+
+<Pop2>:
+    Label:
+        text: "Username does not exist"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top": 0.5}
+
+<Pop3>:
+    Label:
+        text: "             Incorrect password\nTry again or click forget password"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top": 0.5}
+
+<Pop4>:
+    Label:
+        text: "You are logged in"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top": 0.5}
+
+<Pop5>:
+    Label:
+        text: "Invalid inputs or missing input"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top": 0.5}
+
+<Pop6>:
+    Label:
+        text: "You need to be logged in\n     to use this feature"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top": 0.5}
+
+<Pop7>:
+    Label:
+        text: "New password has been set"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top": 0.5}
+
+<Pop8>:
+    Label:
+        text: "You have successfully signed up"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top": 0.5}
+
+<Pop9>:
+    Label:
+        text: "   Only available if\nyou're not logged in"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top": 0.5}
+
