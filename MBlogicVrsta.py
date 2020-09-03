@@ -1,6 +1,6 @@
 import random
 
-a = "ara.jpg"
+a = "Ara.jpg"
 b = "C:/Users/Maj/Desktop/AnimalsMB/Dog.jpg"
 c = "C:/Users/Maj/Desktop/AnimalsMB/Elephant.jpg"
 d = "C:/Users/Maj/Desktop/AnimalsMB/Fish.jpg"
